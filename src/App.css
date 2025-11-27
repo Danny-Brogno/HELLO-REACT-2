@@ -79,17 +79,9 @@ body {
   position: relative;
 }
 
-#root {
-  height: 100vh;
-  width: 100%;
-  
-}
-
 #root div {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -107,6 +99,22 @@ button {
   background-color: navy;
   color: red;
   padding: 1em 6em;
+  font-size: 2em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+input {
+  width: 30%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 1em 0em 1em 1em;
   font-size: 2em;
   cursor: pointer;
   border: none;
