@@ -79,7 +79,18 @@ body {
   position: relative;
 }
 
-#root div {
+header,
+footer {
+  width: 100%;
+  background-color: purple;
+  color: black;
+  padding: 2em 0em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root div.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,46 +114,51 @@ ul.list-of-jobs {
 }
 
 ul.list-of-jobs li {
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1em;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
 }
 
 button.up {
   background-color: navy;
   color: darkred;
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
   padding: 1em 6em;
-  font-size: 2em;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
   margin-bottom: 1em;
 }
 
 button.down {
   background-color: darkred;
   color: white;
-  font-weight: bold;
   padding: 1em 6em;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
 }
 
 button.add-bot {
   background-color: lime;
   color: black;
-  font-weight: bold;
   padding: 1em 6em;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
   margin: 3em 0em;
+}
+
+button.show-bots {
+  width: 15em;
+  padding: 10px 10px;
+  background-color: purple;
+  color: white;
+  margin-bottom: 3em;
 }
 
 h2 {
@@ -150,7 +166,7 @@ h2 {
 }
 
 input.one {
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
   padding: 1em 0em 1em 1em;
   font-size: 2em;
@@ -159,7 +175,7 @@ input.one {
 }
 
 input.two {
-  width: 30%;
+  width: 40%;
   margin: 0em auto 1em auto;
   padding: 10px 0px 10px 10px;
   border: none;
@@ -180,3 +196,18 @@ hr {
   margin: 5em 0em;
 }
 
+.Completed {
+  color: green;
+}
+
+.Running {
+  color: yellow;
+}
+
+.Stopped {
+  color: red;
+}
+
+.Pending {
+  color: royalblue;
+}

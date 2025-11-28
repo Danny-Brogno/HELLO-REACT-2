@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {Header} from "./components/header.js";
+import {Footer} from "./components/footer.js";
 import './App.css';
 
 const JobCounter = () => {
@@ -18,7 +20,9 @@ const JobCounter = () => {
   const [bots1, setBotValues] = useState([
     {id : 2024, botName : "Extraction emails", status:"Running"},
     {id : 1989, botName : "Sending emails", status:"Completed"},
-    {id : 1962, botName : "Reading emails", status:"Stopped"}
+    {id : 1962, botName : "Reading emails", status:"Stopped"},
+    {id : 1987, botName : "Forwarding emails", status:"Pending"},
+    {id : 2025, botName : "Deleting emails", status:"Running"}
   ]);
   
   const bots2 = ["bots1", "bots2", "bots3"];
@@ -29,6 +33,8 @@ const JobCounter = () => {
     botName: "",
     status: ""
   });
+  
+  const [show, setShow] = useState(false);
   
   // -----------------------------------------
   
@@ -60,10 +66,15 @@ const JobCounter = () => {
   }
   
   function removeJob() {
-    let newNumber = currentNumber - 1;
-    updateNumber(newNumber);
-    updateJobMessage(newNumber);
-    console.log(newNumber);
+    if (currentNumber > 0) { 
+      let newNumber = currentNumber - 1;
+      updateNumber(newNumber);
+      updateJobMessage(newNumber);
+      console.log(newNumber);
+    } else {
+      alert("Job counter is already at 0. Cannot remove any more jobs.");
+      console.log("Attempted to remove job at count 0.");
+    }
   }
   
   function reset() {
@@ -73,7 +84,7 @@ const JobCounter = () => {
     console.log(newNumber);
   }
   
-  // This is the function that handles the 3 <li> in the page: "bots1, bots2, bots3"
+  // This is the function that handles the 3 <li> in the page: "bots1, bots2, bots3. And the INPUT where you write 'live' "
   function handleChange(event) {
     console.log(event.target.value);
     setInputValue(event.target.value);
@@ -96,7 +107,9 @@ const JobCounter = () => {
   // -----------------------------------------
   
   return(
-    <div>
+    <div className="container">
+    
+    <Header />
     
       <h1>Job Counter</h1>
       
@@ -135,17 +148,29 @@ const JobCounter = () => {
       {/* This adds the bots to the input above 2*/}
       <button className="add-bot" onClick={addBotToList}>Add bot</button>
       
+      {/* button that shows the list of bots on click*/}
+      <button className="show-bots" onClick={() => setShow(!show)}>CLICK HERE TO SHOW THE BOTS!</button>
+      
       {/* These are the list of jobs with the green button on the right */}
       <ul className="list-of-jobs">
         {
-          bots1.map( bot => (
-            <li key={bot.id}> 
+          show && bots1.map( bot => (
+            <li key={bot.id} 
+            className= {
+              bot.status === "Completed" ? "Completed" : 
+              bot.status === "Running" ? "Running" :
+              bot.status === "Stopped" ? "Stopped" :
+              "Pending"
+            }
+            > 
               {bot.id} - {bot.botName} - {bot.status} 
               <button className="down" onClick={() => handleDelete(bot.id)}>DELETE</button>
             </li>
           ))
         }
       </ul>
+      
+      <Footer />
       
     </div>
   );
