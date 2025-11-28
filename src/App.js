@@ -10,14 +10,25 @@ const JobCounter = () => {
   // }
   
   const [currentNumber, updateNumber] = useState(0);
+  
   const [jobMessage, setJobMessage] = useState("No jobs available");
+  
   const [inputVal, setInputValue] = useState('');
+  
   const [bots1, setBotValues] = useState([
-    {id : 1, botName : "Extraction emails", status:"Running"},
-    {id : 2, botName : "Sending emails", status:"Completed"},
-    {id : 3, botName : "Reading emails", status:"Stopped"}
+    {id : 2024, botName : "Extraction emails", status:"Running"},
+    {id : 1989, botName : "Sending emails", status:"Completed"},
+    {id : 1962, botName : "Reading emails", status:"Stopped"}
   ]);
+  
   const bots2 = ["bots1", "bots2", "bots3"];
+  
+  // THIS IS TO ADD ANOTHER BOT
+  const [newBot, setNewBot] = useState({
+    id:"",
+    botName: "",
+    status: ""
+  });
   
   // -----------------------------------------
   
@@ -62,9 +73,24 @@ const JobCounter = () => {
     console.log(newNumber);
   }
   
+  // This is the function that handles the 3 <li> in the page: "bots1, bots2, bots3"
   function handleChange(event) {
     console.log(event.target.value);
     setInputValue(event.target.value);
+  }
+  
+  // THIS Adds a bot
+  function addBotToList() {
+    if (newBot.id.trim() !== "" && newBot.botName.trim() !== "" && newBot.status.trim() !== "" ) {
+      setBotValues([...bots1, newBot]);
+      setNewBot({id:"", botName:"", status:""});
+    }
+  }
+  
+  // THIS DELETES THE ENTIRE JOB IF YOU CLICK ON THE RED BUTTON
+  function handleDelete(id) {
+    console.log(id);
+    setBotValues(bots1.filter(bot=> id !== bot.id));
   }
   
   // -----------------------------------------
@@ -78,25 +104,46 @@ const JobCounter = () => {
       
       <p>Status: {jobMessage}</p>
       
-      <button onClick={addJob}>Add Job</button>
+      <button className="up" onClick={addJob}>Add Job</button>
       
-      <button onClick={removeJob}>Remove Job</button>
+      <button className="up" onClick={removeJob}>Remove Job</button>
       
-      <button onClick={reset}>Reset</button>
+      <button className="up" onClick={reset}>Reset</button>
       
       <h2>Type something in the input below: {inputVal}</h2>
       
-      <input type="text" onChange={handleChange}></input>
+      {/* INPUT 1*/}
+      <input className="one" type="text" onChange={handleChange}></input>
       
+      {/* These are the 3 <li> that in the page are "bots1, bots2, bots3" */}
       <ul>
         {
-          bots2.map( bot=> <li key={bot}> {bot} </li>)
+          bots2.map( bot=> 
+            <li key={bot}> {bot} </li>
+          )
         }
       </ul>
       
-      <ul>
+      {/* ------------------------------------------------------ */}
+      <hr></hr>
+      
+      {/* INPUT 2*/}
+      <input className="two" type="text" value={newBot.id} onChange={(e)=>setNewBot({... newBot,id:e.target.value})} placeholder='Enter ID' ></input>
+      <input className="two" type="text" value={newBot.botName} onChange={(e)=>setNewBot({... newBot,botName:e.target.value})} placeholder='Enter name' ></input>
+      <input className="two" type="text" value={newBot.status} onChange={(e)=>setNewBot({... newBot,status:e.target.value})} placeholder='Enter status' ></input>
+      
+      {/* This adds the bots to the input above 2*/}
+      <button className="add-bot" onClick={addBotToList}>Add bot</button>
+      
+      {/* These are the list of jobs with the green button on the right */}
+      <ul className="list-of-jobs">
         {
-          bots1.map( bot=> <li>{bot.id} - {bot.botName} - {bot.status}</li>)
+          bots1.map( bot => (
+            <li key={bot.id}> 
+              {bot.id} - {bot.botName} - {bot.status} 
+              <button className="down" onClick={() => handleDelete(bot.id)}>DELETE</button>
+            </li>
+          ))
         }
       </ul>
       

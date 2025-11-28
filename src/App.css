@@ -93,30 +93,90 @@ p {
   font-size: 2em;
 }
 
-button {
+ul.list-of-jobs {
+  width: 100%;
+  min-height: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ul.list-of-jobs li {
   width: 30%;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+button.up {
   background-color: navy;
-  color: red;
+  color: darkred;
+  width: 30%;
+  margin: 0 auto;
   padding: 1em 6em;
   font-size: 2em;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-bottom: 1em;
+}
+
+button.down {
+  background-color: darkred;
+  color: white;
+  font-weight: bold;
+  padding: 1em 6em;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+}
+
+button.add-bot {
+  background-color: lime;
+  color: black;
+  font-weight: bold;
+  padding: 1em 6em;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  margin: 3em 0em;
 }
 
 h2 {
   font-size: 3em;
 }
 
-input {
+input.one {
   width: 30%;
   margin: 0 auto;
-  background-color: white;
   padding: 1em 0em 1em 1em;
   font-size: 2em;
-  cursor: pointer;
   border: none;
   border-radius: 5px;
 }
+
+input.two {
+  width: 30%;
+  margin: 0em auto 1em auto;
+  padding: 10px 0px 10px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+input.one:focus,
+input.two:focus {
+  outline: none;
+}
+
+hr {
+  color: navy;
+  width: 100%;
+  height: 10px;
+  background-color: navy;
+  border: none;
+  margin: 5em 0em;
+}
+
