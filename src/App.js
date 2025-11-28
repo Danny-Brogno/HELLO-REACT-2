@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {Header} from "./components/header.js";
 import {JobCounter} from "./components/main.js";
 import {Footer} from "./components/footer.js";
