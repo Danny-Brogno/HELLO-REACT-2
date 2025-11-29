@@ -7,7 +7,7 @@ const App = () => {
   return(
     <div className="App">
       <Header />
-      <JobCounter />
+      <JobCounter runJob="Applications schedule" fiscalYear="2021"/>
       <Footer />
     </div>
   );

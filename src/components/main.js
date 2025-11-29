@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import {EachBot} from './eachBot.js';
 
-export const JobCounter = () => {
+export const JobCounter = (props) => {
   
   // let jobCount = 0;
   // const handleAddJob = () => {
@@ -118,7 +119,7 @@ export const JobCounter = () => {
       
       <button className="up" onClick={reset}>Reset</button>
       
-      <h2>Type something in the input below: {inputVal}</h2>
+      <h2 className="type-something">Type something in the input below: {inputVal}</h2>
       
       {/* INPUT 1*/}
       <input className="one" type="text" onChange={handleChange}></input>
@@ -149,21 +150,21 @@ export const JobCounter = () => {
       {/* These are the list of jobs with the green button on the right */}
       <ul className="list-of-jobs">
         {
-          show && bots1.map( bot => (
-            <li key={bot.id} 
-            className= {
-              bot.status === "Completed" ? "Completed" : 
-              bot.status === "Running" ? "Running" :
-              bot.status === "Stopped" ? "Stopped" :
-              "Pending"
-            }
-            > 
-              {bot.id} - {bot.botName} - {bot.status} 
-              <button className="down" onClick={() => handleDelete(bot.id)}>DELETE</button>
-            </li>
-          ))
+          /* USE EachBot as aseparate component inside component (main.js)*/
+          show && bots1.map( bot => 
+            (
+              <EachBot 
+                key={bot.id}
+                bot={bot} 
+                handleDelete={handleDelete}
+              />
+            )
+          )
         }
       </ul>
+      
+      <h3>{props.runJob}</h3>
+      <h3 className="pre-footer">{props.fiscalYear}</h3>
       
     </div>
   );

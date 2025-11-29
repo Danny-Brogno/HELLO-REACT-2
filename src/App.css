@@ -79,17 +79,6 @@ body {
   position: relative;
 }
 
-header,
-footer {
-  width: 100%;
-  background-color: purple;
-  color: black;
-  padding: 2em 0em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #root div.container {
   display: flex;
   flex-direction: column;
@@ -161,7 +150,7 @@ button.show-bots {
   margin-bottom: 3em;
 }
 
-h2 {
+h2.type-something {
   font-size: 3em;
 }
 
@@ -211,3 +200,179 @@ hr {
 .Pending {
   color: royalblue;
 }
+
+h3.pre-footer {
+  margin-bottom: 3em;
+}
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+
+/* NAVBAR START */
+/* NAVBAR START */
+/* NAVBAR START */
+/* NAVBAR START */
+/* NAVBAR START */
+
+#navbar {
+  background-color: var(--elegantGrey);
+  position: fixed;
+  top: -50px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+  z-index: 10;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: var(--JavaScript-yellow);
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: var(--normal-black);
+}
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+
+/* FOOTER START */
+/* FOOTER START */
+/* FOOTER START */
+/* FOOTER START */
+/* FOOTER START */
+
+footer section {
+  min-height: 8em;
+  position: relative;
+  background-color: var(--elegantGrey);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+footer section .top-footer h3 {
+  font-size: 1.3em;
+}
+
+/* BECAUSE THE FOOTER CONTAINS A NAVBAR. CHECK NAVBAR FOR CSS */
+/* BECAUSE THE FOOTER CONTAINS A NAVBAR. CHECK NAVBAR FOR CSS */
+
+/* MIDDLE FOOTER */
+
+footer section .middle-footer {
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BOTTOM FOOTER */
+
+footer section .bottom-footer span a i {
+  font-size: 1.3em;
+}
+
+footer section .scroll-top-btn {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  margin: 0px auto 10px auto;
+}
+
+footer section .scroll-top-btn ul {
+  font-size: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--normal-white);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* SIGNATURE */
+
+footer section #signature {
+  display: flex;
+  justify-content: center;
+}
+
+footer section #signature ul {
+  color: white;
+  font-size: 1.8em;
+  display: flex;
+}
+
+footer section #signature ul li:last-of-type {
+  position: relative;
+  bottom: 8px;
+  color: var(--lime-danny);
+  cursor: pointer;
+  animation: rotation 4s linear infinite;
+}
+
+@keyframes rotation {
+  0% {text-shadow: 0 0 purple;}
+  25% {text-shadow: 1px 0 var(--medium-purple), 2px 0 var(--medium-purple), 3px 0 var(--medium-purple), 4px 0 var(--medium-purple), 5px 0 var(--medium-purple); }
+  50% {text-shadow: 0 0 purple;}
+  75% {text-shadow: -1px 0 var(--scottish-blue), -2px 0 var(--scottish-blue), -3px 0 var(--scottish-blue), -4px 0 var(--scottish-blue), -5px 0 var(--scottish-blue); }
+  100% {text-shadow: 0 0 gold;}
+
+  from {transform: rotateY(0deg);}
+  to {transform: rotateY(-360deg);}
+}
+
+footer section .middle-footer ul,
+footer section .bottom-footer {
+  width:30%;
+  margin:0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer section .middle-footer ul li,
+footer section .bottom-footer span a i {
+  border-bottom: 0.5px solid transparent;
+  padding-bottom:2px;
+  font-size: 1em;
+}
+
+footer section .middle-footer ul li:hover,
+footer section .bottom-footer span a i:hover {
+  color: var(--JavaScript-yellow);
+  border-bottom: 0.5px solid var(--normal-white);
+  transition: 0.2s;
+  
+}
+
+/* I PUT THIS HERE TO OVERWRITE PREVIOUS MARGIN DECLARATION */
+footer section .top-footer,
+footer section .middle-footer,
+footer section .bottom-footer {
+  margin:1.2em 0em;
+}
+
+/* FOOTER END */
+/* FOOTER END */
+/* FOOTER END */
+/* FOOTER END */
