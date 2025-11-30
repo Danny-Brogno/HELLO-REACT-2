@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Function to scroll to the top START
 function scrollToTheTop() {
-  // Scroll the window to the top (Y coordinate 0)
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
@@ -10,15 +9,32 @@ function scrollToTheTop() {
 }
 // Function to scroll to the top END
 
-const scrollTopBtn = document.querySelector(".scroll-top-btn ul");
-
-if (scrollTopBtn) {
-  scrollTopBtn.addEventListener('click', function(event) {
-    scrollToTheTop();
-  });
-}
-
 export const Footer = () => {
+  
+  // useEffect Hook runs DOM code AFTER render
+  useEffect(() => {
+    // 1. Get the element (now that it's rendered)
+    const scrollTopBtn = document.querySelector(".scroll-top-btn ul");
+    
+    // 2. Define the handler function
+    const handleClick = () => {
+      scrollToTheTop();
+    };
+
+    // 3. Attach the event listener
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', handleClick);
+    }
+
+    // 4. Cleanup function: Runs when the component is unmounted
+    return () => {
+      if (scrollTopBtn) {
+        // Remove the listener to prevent memory leaks and unexpected behavior
+        scrollTopBtn.removeEventListener('click', handleClick);
+      }
+    };
+  }, []);
+
   return (
     <footer>
       <section>
@@ -103,6 +119,7 @@ export const Footer = () => {
               UP
             </li>
           </ul>
+          
         </div>
         
       </section>
