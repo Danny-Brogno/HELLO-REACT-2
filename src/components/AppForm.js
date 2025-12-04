@@ -1,4 +1,5 @@
 import React from 'react';
+import {FormButtons} from './formButtons.js';
 
 export const AppForm = () => {
   return (
@@ -7,9 +8,10 @@ export const AppForm = () => {
         <input type="text" className="bot_input" placeholder="write here"></input>
         <div className="formDetails">
           <div className="bottomLine">
-            <button className="button-tag">Read emails</button>
-            <button className="button-tag">Web parsing</button>
-            <button className="button-tag">Send emails</button>
+            {/*COMPONENT INSIDE ANOTHER COMPONENT*/}
+            <FormButtons value="Read emails" />
+            <FormButtons value="Send emails" />
+            <FormButtons value="Web parsing" />
           </div>
           <div>
             <select className="jobStatus">

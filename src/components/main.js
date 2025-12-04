@@ -153,6 +153,7 @@ export const JobCounter = (props) => {
           /* USE EachBot as aseparate component inside component (main.js)*/
           show && bots1.map( bot => 
             (
+              /*COMPONENT INSIDE ANOTHER COMPONENT*/
               <EachBot 
                 key={bot.id}
                 bot={bot} 
