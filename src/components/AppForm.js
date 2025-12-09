@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {FormButtons} from './formButtons.js';
 import {ColumnComponent} from './columnComponent.js';
 
 export const AppForm = () => {
+  
+  // FIRST INPUT
+  const [activity,setActivity] = useState('');
+  
+  const callChangeTextFunction = (e) => {
+    setActivity(e.target.value);
+  };
+  console.log(activity);
+  
+  // SECOND INPUT 
+  const [status,setStatus] = useState('');
+  
+  const callStatusChangeFunction = (e) => {
+    setStatus(e.target.value);
+  }
+  console.log(status);
+  
   return (
     
     <div className="formHeader">
@@ -10,7 +27,7 @@ export const AppForm = () => {
 
         <div className="form-container">
         
-          <input type="text" className="bot_input" placeholder="write here"></input>
+          <input type="text" className="bot_input" placeholder="write here" onChange={callChangeTextFunction}></input>
           
           <div className="formDetails">
 
@@ -22,11 +39,11 @@ export const AppForm = () => {
             </div>
 
             <div className="select-container">
-              <select className="jobStatus">
-                <option value="start">
+              <select className="jobStatus" onChange={callStatusChangeFunction}>
+                <option value="started">
                   START PROCESS
                 </option>
-                <option value="stop">
+                <option value="stopped">
                   STOP PROCESS
                 </option>
                 <option value="completed">
